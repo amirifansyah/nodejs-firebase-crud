@@ -3,6 +3,7 @@ import cors from "cors";
 import itemRoutes from "./routes/itemRoutes.js";
 import logRoutes from "./routes/logRoutes.js";
 import { writeLog } from "./utils/logProcess.js";
+import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+app.use("/auth", authRoutes);
 app.use("/items", itemRoutes);
 app.use("/logs", logRoutes);
 

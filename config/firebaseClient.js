@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, deleteDoc, getDoc } from "firebase/firestore";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import dotenv from "dotenv";
 
 dotenv.config(); 
@@ -14,7 +15,13 @@ const firebaseConfig = {
   measurementId: process.env.FIREBASE_MEASUREMENT_ID
 };
 
+// Inisialisasi Firebase Client SDK
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
-export { db, collection, getDocs, addDoc, doc, updateDoc, deleteDoc, getDoc };
+export { 
+  db, auth, 
+  collection, getDocs, addDoc, doc, updateDoc, deleteDoc, getDoc, 
+  signInWithEmailAndPassword, createUserWithEmailAndPassword 
+};
